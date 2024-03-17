@@ -104,7 +104,7 @@ class GOSTCollectionArticle(BaseCitationStyle):
 
 class GOSTThesisAbstract(BaseCitationStyle):
     """
-    Форматирование для авторефератов.
+    Форматирование для автореферата.
     """
 
     data: ThesisAbstractModel
@@ -112,7 +112,7 @@ class GOSTThesisAbstract(BaseCitationStyle):
     @property
     def template(self) -> Template:
         return Template(
-            "$author $thesis_title: $degree. – $field_of_science. – $city, $year. – $pages с."
+            "$author. $thesis_title [$degree]: $field_of_science, $specialty_code / $city, $year. – $pages с."
         )
 
     def substitute(self) -> str:
@@ -124,6 +124,7 @@ class GOSTThesisAbstract(BaseCitationStyle):
             thesis_title=self.data.thesis_title,
             degree=self.data.degree,
             field_of_science=self.data.field_of_science,
+            specialty_code=self.data.specialty_code,
             city=self.data.city,
             year=self.data.year,
             pages=self.data.pages,
@@ -131,7 +132,7 @@ class GOSTThesisAbstract(BaseCitationStyle):
 
 class GOSTNewspaperArticle(BaseCitationStyle):
     """
-    Форматирование для статей из газеты.
+    Форматирование для статьи из газеты.
     """
 
     data: NewspaperArticleModel

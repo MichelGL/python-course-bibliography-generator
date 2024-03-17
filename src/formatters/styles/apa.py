@@ -52,7 +52,7 @@ class APAInternetResource(BaseCitationStyle):
     @property
     def template(self) -> Template:
         return Template(
-            "$website ($access_date) $article $link)"
+            "$website ($access_date) $article $link"
         )
 
     def substitute(self) -> str:
@@ -95,7 +95,7 @@ class APAArticlesCollection(BaseCitationStyle):
 
 class APAThesisAbstract(BaseCitationStyle):
     """
-    Форматирование для авторефератов по стандартам APA.
+    Форматирование для автореферата по стандартам APA.
     """
 
     data: ThesisAbstractModel
@@ -103,7 +103,7 @@ class APAThesisAbstract(BaseCitationStyle):
     @property
     def template(self) -> Template:
         return Template(
-            "$author ($year). $thesis_title. $degree. $field_of_science. $city, $year. $pages."
+            "$author ($year). $thesis_title ($degree). $field_of_science, $specialty_code. $city, $year. $pages."
         )
 
     def substitute(self) -> str:
@@ -115,6 +115,7 @@ class APAThesisAbstract(BaseCitationStyle):
             thesis_title=self.data.thesis_title,
             degree=self.data.degree,
             field_of_science=self.data.field_of_science,
+            specialty_code=self.data.specialty_code,
             city=self.data.city,
             year=self.data.year,
             pages=self.data.pages,
@@ -122,7 +123,7 @@ class APAThesisAbstract(BaseCitationStyle):
 
 class APANewspaperArticle(BaseCitationStyle):
     """
-    Форматирование для статей из газеты по стандартам APA.
+    Форматирование для статьи из газеты по стандартам APA.
     """
 
     data: NewspaperArticleModel
