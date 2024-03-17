@@ -5,7 +5,13 @@ from string import Template
 
 from pydantic import BaseModel
 
-from formatters.models import BookModel, InternetResourceModel, ArticlesCollectionModel, ThesisAbstractModel, NewspaperArticleModel
+from formatters.models import (
+    BookModel,
+    InternetResourceModel,
+    ArticlesCollectionModel,
+    ThesisAbstractModel,
+    NewspaperArticleModel,
+)
 from formatters.styles.base import BaseCitationStyle
 from logger import get_logger
 
@@ -102,6 +108,7 @@ class GOSTCollectionArticle(BaseCitationStyle):
             pages=self.data.pages,
         )
 
+
 class GOSTThesisAbstract(BaseCitationStyle):
     """
     Форматирование для автореферата.
@@ -130,6 +137,7 @@ class GOSTThesisAbstract(BaseCitationStyle):
             pages=self.data.pages,
         )
 
+
 class GOSTNewspaperArticle(BaseCitationStyle):
     """
     Форматирование для статьи из газеты.
@@ -156,6 +164,7 @@ class GOSTNewspaperArticle(BaseCitationStyle):
             article_number=self.data.article_number,
         )
 
+
 class GOSTCitationFormatter:
     """
     Базовый класс для итогового форматирования списка источников.
@@ -166,7 +175,7 @@ class GOSTCitationFormatter:
         InternetResourceModel.__name__: GOSTInternetResource,
         ArticlesCollectionModel.__name__: GOSTCollectionArticle,
         ThesisAbstractModel.__name__: GOSTThesisAbstract,
-        NewspaperArticleModel.__name__: GOSTNewspaperArticle
+        NewspaperArticleModel.__name__: GOSTNewspaperArticle,
     }
 
     def __init__(self, models: list[BaseModel]) -> None:

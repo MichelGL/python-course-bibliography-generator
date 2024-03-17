@@ -79,6 +79,7 @@ class ArticlesCollectionModel(BaseModel):
     year: int = Field(..., gt=0)
     pages: str
 
+
 class ThesisAbstractModel(BaseModel):
     """
     Модель автореферата:
@@ -105,6 +106,7 @@ class ThesisAbstractModel(BaseModel):
     city: str  # город издательства
     year: int = Field(..., gt=0)  # год
     pages: int = Field(..., gt=0)  # количество страниц
+
 
 class NewspaperArticleModel(BaseModel):
     """

@@ -3,8 +3,20 @@
 """
 
 from formatters.base import BaseCitationFormatter
-from formatters.models import BookModel, InternetResourceModel, ArticlesCollectionModel, ThesisAbstractModel, NewspaperArticleModel
-from formatters.styles.gost import GOSTBook, GOSTInternetResource, GOSTCollectionArticle, GOSTThesisAbstract, GOSTNewspaperArticle
+from formatters.models import (
+    BookModel,
+    InternetResourceModel,
+    ArticlesCollectionModel,
+    ThesisAbstractModel,
+    NewspaperArticleModel,
+)
+from formatters.styles.gost import (
+    GOSTBook,
+    GOSTInternetResource,
+    GOSTCollectionArticle,
+    GOSTThesisAbstract,
+    GOSTNewspaperArticle,
+)
 
 
 class TestGOST:
@@ -79,7 +91,7 @@ class TestGOST:
         )
 
     def test_newspaper_article(
-            self, newspaper_article_model_fixture: NewspaperArticleModel
+        self, newspaper_article_model_fixture: NewspaperArticleModel
     ) -> None:
         """
         Тестирование форматирования статьи из газеты.
@@ -91,8 +103,8 @@ class TestGOST:
         model = GOSTNewspaperArticle(newspaper_article_model_fixture)
 
         assert (
-                model.formatted
-                == "Иванов И.М., Петров С.Н. Наука как искусство // Южный Урал. – 1980. – 01.10. – № 5."
+            model.formatted
+            == "Иванов И.М., Петров С.Н. Наука как искусство // Южный Урал. – 1980. – 01.10. – № 5."
         )
 
     def test_citation_formatter(

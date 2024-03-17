@@ -3,8 +3,20 @@
 """
 
 from formatters.base import BaseCitationFormatter
-from formatters.models import BookModel, InternetResourceModel, ArticlesCollectionModel, ThesisAbstractModel, NewspaperArticleModel
-from formatters.styles.apa import APACitationFormatter, APABook, APAInternetResource, APAArticlesCollection, APAThesisAbstract, APANewspaperArticle
+from formatters.models import (
+    BookModel,
+    InternetResourceModel,
+    ArticlesCollectionModel,
+    ThesisAbstractModel,
+    NewspaperArticleModel,
+)
+from formatters.styles.apa import (
+    APABook,
+    APAInternetResource,
+    APAArticlesCollection,
+    APAThesisAbstract,
+    APANewspaperArticle,
+)
 
 
 class TestAPA:

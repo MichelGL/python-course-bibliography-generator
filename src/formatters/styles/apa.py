@@ -1,10 +1,17 @@
 from string import Template
 from pydantic import BaseModel
-from formatters.models import BookModel, InternetResourceModel, ArticlesCollectionModel, ThesisAbstractModel, NewspaperArticleModel
+from formatters.models import (
+    BookModel,
+    InternetResourceModel,
+    ArticlesCollectionModel,
+    ThesisAbstractModel,
+    NewspaperArticleModel,
+)
 from formatters.styles.base import BaseCitationStyle
 from logger import get_logger
 
 logger = get_logger(__name__)
+
 
 class APABook(BaseCitationStyle):
     """
@@ -42,6 +49,7 @@ class APABook(BaseCitationStyle):
 
         return f"{self.data.edition} изд. – " if self.data.edition else ""
 
+
 class APAInternetResource(BaseCitationStyle):
     """
     Форматирование для интернет-ресурсов по стандартам APA.
@@ -51,9 +59,7 @@ class APAInternetResource(BaseCitationStyle):
 
     @property
     def template(self) -> Template:
-        return Template(
-            "$website ($access_date) $article $link"
-        )
+        return Template("$website ($access_date) $article $link")
 
     def substitute(self) -> str:
 
@@ -63,8 +69,9 @@ class APAInternetResource(BaseCitationStyle):
             article=self.data.article,
             website=self.data.website,
             link=self.data.link,
-            access_date = self.data.access_date,
+            access_date=self.data.access_date,
         )
+
 
 class APAArticlesCollection(BaseCitationStyle):
     """
@@ -92,6 +99,7 @@ class APAArticlesCollection(BaseCitationStyle):
             year=self.data.year,
             pages=self.data.pages,
         )
+
 
 class APAThesisAbstract(BaseCitationStyle):
     """
@@ -121,6 +129,7 @@ class APAThesisAbstract(BaseCitationStyle):
             pages=self.data.pages,
         )
 
+
 class APANewspaperArticle(BaseCitationStyle):
     """
     Форматирование для статьи из газеты по стандартам APA.
@@ -147,6 +156,7 @@ class APANewspaperArticle(BaseCitationStyle):
             article_number=self.data.article_number,
         )
 
+
 class APACitationFormatter:
     """
     Базовый класс для форматирования списка источников по стандартам APA.
@@ -157,7 +167,7 @@ class APACitationFormatter:
         InternetResourceModel.__name__: APAInternetResource,
         ArticlesCollectionModel.__name__: APAArticlesCollection,
         ThesisAbstractModel.__name__: APAThesisAbstract,
-        NewspaperArticleModel.__name__: APANewspaperArticle
+        NewspaperArticleModel.__name__: APANewspaperArticle,
     }
 
     def __init__(self, models: list[BaseModel]) -> None:

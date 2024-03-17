@@ -3,7 +3,13 @@
 """
 import pytest
 
-from formatters.models import BookModel, InternetResourceModel, ArticlesCollectionModel, ThesisAbstractModel, NewspaperArticleModel
+from formatters.models import (
+    BookModel,
+    InternetResourceModel,
+    ArticlesCollectionModel,
+    ThesisAbstractModel,
+    NewspaperArticleModel,
+)
 
 
 @pytest.fixture
@@ -59,6 +65,7 @@ def articles_collection_model_fixture() -> ArticlesCollectionModel:
         pages="25-30",
     )
 
+
 @pytest.fixture
 def thesis_abstract_model_fixture() -> ThesisAbstractModel:
     """
@@ -77,6 +84,7 @@ def thesis_abstract_model_fixture() -> ThesisAbstractModel:
         year=2020,
         pages=199,
     )
+
 
 @pytest.fixture
 def newspaper_article_model_fixture() -> NewspaperArticleModel:
